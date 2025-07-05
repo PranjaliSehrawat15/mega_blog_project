@@ -11,6 +11,16 @@ export class Service{
         this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
+            this.Databases= new Databases(this.client);
+            this.bucket =new Storage(this.client);
+    }
+    async createPost({title, slug,content, featuredImage,status, userId}){
+        try {
+            
+        } catch (error) {
+            console.log("Appwrite service :: createPost :: error",error);
+        }
+
     }
 }
 
