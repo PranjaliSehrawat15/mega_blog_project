@@ -1,11 +1,10 @@
-import React,{useInsertionEffect, useState} from 'react'
+import React, {useState} from 'react'
 import authService from '../appwrite/auth'
-import {Link,Navigate,useNavigate} from 'react-router-dom'
-import { login } from '../store/authSlice'
-import {Button, Input, Logo} from './index'
-import { useDispatch } from 'react-redux'
-import { useForm } from 'react-hook-form'
-
+import {Link ,useNavigate} from 'react-router-dom'
+import {login} from '../store/authSlice'
+import {Button, Input, Logo} from './index.js'
+import {useDispatch} from 'react-redux'
+import {useForm} from 'react-hook-form'
 
 function Signup() {
     const navigate = useNavigate()
@@ -13,17 +12,17 @@ function Signup() {
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
 
-    const create = async(data) =>{
+    const create = async(data) => {
         setError("")
         try {
-          const userData = await authService.createAccount(data)
-          if(userData){
-           const userData= await authService.getCurrentUser()
-           if(userData) dispatch(login(userData));
-           navigate("/")
-          }
+            const userData = await authService.createAccount(data)
+            if (userData) {
+                const userData = await authService.getCurrentUser()
+                if(userData) dispatch(login(userData));
+                navigate("/")
+            }
         } catch (error) {
-           setError(error.message) 
+            setError(error.message)
         }
     }
 
@@ -44,49 +43,45 @@ function Signup() {
                     >
                         Sign In
                     </Link>
-                     </p>
+                </p>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
-                <form onSubmit = {handleSubmit(create)}>
+                <form onSubmit={handleSubmit(create)}>
                     <div className='space-y-5'>
-                        <Input 
-                        label ="Full Name: "
-                        placeholder = "Enter your full name"
+                        <Input
+                        label="Full Name: "
+                        placeholder="Enter your full name"
                         {...register("name", {
                             required: true,
                         })}
                         />
-
-                        <Input 
-                        label ="Email: "
+                        <Input
+                        label="Email: "
                         placeholder="Enter your email"
-                        type ="email"
+                        type="email"
                         {...register("email", {
                             required: true,
                             validate: {
-                                matchPatern: (value) =>  /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                            "Email address must be a valid address",
-
+                                matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                "Email address must be a valid address",
                             }
                         })}
                         />
                         <Input
-                        label ="Password: "
+                        label="Password: "
+                        type="password"
                         placeholder="Enter your password"
-                        type = "password"
                         {...register("password", {
                             required: true,})}
-                            />
-                            <Button
-                            type ="submit"
-                            className="w-full">
-                                Create Account
-                            </Button>
-
+                        />
+                        <Button type="submit" className="w-full">
+                            Create Account
+                        </Button>
                     </div>
                 </form>
-                </div>
-                </div>
+            </div>
+
+    </div>
   )
 }
 
