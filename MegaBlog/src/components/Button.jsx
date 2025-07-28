@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Button({
     children,
     type = "button",
@@ -9,7 +7,10 @@ export default function Button({
     ...props
 }) {
     return (
-        <button className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`} {...props}>
+        <button
+            className={`px-4 py-2 rounded-lg shadow font-semibold ${bgColor} ${textColor} hover:bg-blue-700 transition-colors duration-200 ${className}`}
+            {...props}
+        >
             {children}
         </button>
     );
