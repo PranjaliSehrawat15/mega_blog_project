@@ -91,12 +91,12 @@ function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg">
+    <header className="sticky top-0 z-50 bg-gradient-to-tr from-[#2c3e50] to-[#3498db] shadow-lg">
       <Container>
         <nav className="flex items-center py-3">
           <Link to="/" className="flex items-center mr-8">
-            <Logo width="60px" />
-            <span className="ml-2 text-2xl font-bold text-white tracking-wide">MegaBlog</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/60/60736.png" alt="Blogora Logo" width="35" className="rounded" />
+            <span className="ml-2 text-2xl font-bold text-black tracking-wide">Blogora</span>
           </Link>
           <ul className="flex ml-auto gap-2">
             {navItems.map(

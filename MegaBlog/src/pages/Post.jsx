@@ -33,15 +33,20 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
-            <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
-                        src={appwriteService.getFileView(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
-                    />
+        // <div className="py-8">
+        //     <Container>
+        //         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+        //             <img
+        //                 src={appwriteService.getFileView(post.featuredImage)}
+        //                 alt={post.title}
+        //                 className="rounded-xl"
+        //             />
 
+        <div className="py-8">
+  <Container>
+    <div className="w-full flex justify-center mb-4 relative border rounded-xl p-4  bg-white/10 backdrop-blur-md  border-white/20 shadow-lg">
+      <img src={appwriteService.getFileView(post.featuredImage)} alt={post.title} className="rounded-xl max-h-96 object-cover" />
+    
                     {isAuthor && (
                         <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>

@@ -23,8 +23,8 @@ import {Link} from 'react-router-dom'
 function PostCard({ $id, title, featuredImage }) {
   return (
     <Link to={`/post/${$id}`}>
-      <div className="w-full bg-white rounded-xl p-4 shadow hover:shadow-lg transition mb-4">
-        <div className="w-full flex justify-center mb-4">
+    <div className="w-full h-70 flex flex-col justify-between bg-white/10 backdrop-blur-lg border border-white/20 shadow-md rounded-xl p-4 hover:shadow-lg transition mb-4">      
+      <div className="w-full flex justify-center mb-4">
           <img src={appwriteService.getFileView(featuredImage)} alt={title} className="rounded-xl max-h-48 object-cover" />
         </div>
         <h2 className="text-xl font-bold text-gray-800">{title}</h2>
